@@ -5,19 +5,20 @@ on:
     branches:
       - main
   workflow_dispatch:
+  pull_request:
 
 jobs:
   bytebase-ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login to Bytebase
+      - name: Login Bytebase
         id: bytebase-login
-        uses: bytebase/login-action@v0.0.2
+        uses: bytebase/login-action@0.0.2
         with:
           bytebase-url: ${{ secrets.BYTEBASE_URL }}
           service-key: ${{ secrets.BYTEBASE_SERVICE_KEY }}
           service-secret: ${{ secrets.BYTEBASE_SERVICE_SECRET }}
       - name: Output
         run: |
-          echo "the token is: ${{ steps.bytebase-login.outputs.token }}"
+          echo "[DONOT DO THIS IN PROD] the token is: ${{ steps.bytebase-login.outputs.token }}"
