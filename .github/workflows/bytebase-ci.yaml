@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  bytebase-ci:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Login to Bytebase
         id: bytebase-login
         uses: bytebase/login-action@main
