@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Login to Bytebase
         id: bytebase-login
-        uses: bytebase/login-action@main
+        uses: bytebase/login-action@v0.0.2
         with:
           bytebase-url: ${{ secrets.BYTEBASE_URL }}
           service-key: ${{ secrets.BYTEBASE_SERVICE_KEY }}
