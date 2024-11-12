@@ -1,0 +1,22 @@
+name: Bytebase CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Bytebase
+        id: bytebase-login
+        uses: bytebase/login-action@main
+        with:
+          bytebase-url: ${{ secrets.BYTEBASE_URL }}
+          service-key: ${{ secrets.BYTEBASE_SERVICE_KEY }}
+          service-secret: ${{ secrets.BYTEBASE_SERVICE_SECRET }}
+      - name: Output
+        run: |
+          echo "the token is: ${{ steps.bytebase-login.outputs.token }}"
